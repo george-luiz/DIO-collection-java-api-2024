@@ -36,7 +36,7 @@ public class CatalagoLivros {
         List<Livro> livrosPorIntervaloAnos = new ArrayList<>();
         if (!listaLivros.isEmpty()) {
             for (Livro livro: listaLivros) {
-                if(livro.getAnoDePublicacao() >= anoFinal && livro.getAnoDePublicacao() <= anoFinal) {
+                if(livro.getAnoDePublicacao() >= anoInicial && livro.getAnoDePublicacao() <= anoFinal) {
                     livrosPorIntervaloAnos.add(livro);
                 }
             }
@@ -62,5 +62,17 @@ public class CatalagoLivros {
         }
 
         return livroPorTitulo;
+    }
+
+
+    public static void main(String[] args) {
+        var catalagoLivros = new CatalagoLivros();
+
+        catalagoLivros.adicionarLivro("Teste", "George", 1995);
+        catalagoLivros.adicionarLivro("Teste1", "Michele", 1995);
+
+        System.out.println("Pesquisa: " + catalagoLivros.pesquisaPorTitulo("teste"));
+        System.out.println("Pesquisa por ano: " + catalagoLivros.pesquisaPorIntervaloAnos(1900, 1999));
+        System.out.println("Pesquisa por autor: " + catalagoLivros.pesquisarPorAutor("george"));
     }
 }
